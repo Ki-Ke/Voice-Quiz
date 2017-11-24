@@ -15,6 +15,9 @@
  **/
 'use strict';
 var Alexa = require('alexa-sdk');
+var _ = require('lodash');
+var Database = require('./data');
+var convertSSML = require('./helper');
 
 var APP_NAME = 'Voice Quiz';
 var APP_ID = undefined;
@@ -31,28 +34,27 @@ var reprompt = '';
 var languageString = {
     "en": {
         "translation": {
-            "WELCOME_MESSAGE": `Welcome to ${APP_NAME}`
+            "WELCOME_MESSAGE": `Welcome to ${APP_NAME}! Say start quiz to start playing Or say help to learn how to play the game`
         }
     },
     "en-US": {
         "translation": {
-            "WELCOME_MESSAGE": `Welcome to ${APP_NAME}`
+            "WELCOME_MESSAGE": `Welcome to ${APP_NAME}! Say start quiz to start playing Or say help to learn how to play the game`
         }
     },
     "en-GB": {
         "translation": {
-            "WELCOME_MESSAGE": `Welcome to ${APP_NAME}`
+            "WELCOME_MESSAGE": `Welcome to ${APP_NAME}! Say start quiz to start playing Or say help to learn how to play the game`
         }
     },
     "de-DE": {
         "translation": {
-            "WELCOME_MESSAGE": `Welcome to ${APP_NAME}`
+            "WELCOME_MESSAGE": `Welcome to ${APP_NAME}! Say start quiz to start playing Or say help to learn how to play the game`
         }
     }
 };
 
-
-exports.handler = (event, context) => {
+exports.handler = function (event, context) {
     var alexa = Alexa.handler(event, context);
     alexa.resources = languageString;
     alexa.APP_ID = APP_ID;
@@ -62,12 +64,11 @@ exports.handler = (event, context) => {
 
 var handlers = {
     'LaunchRequest': function () {
+        this.emit(":ask", this.t("WELCOME_MESSAGE"), this.t("HELP_MESSAGE"));
+    },
+    'StartVoiceQuizIntent': function () {
         this.handler.state = VOICE_QUIZ_STATE.START;
-        if (this.event.session && !this.event.session.new) {
-            this.emit(":ask", this.t("ALREADY_WELCOME_MESSAGE"), this.t("WELCOME_MESSAGE_REPEAT"));
-        } else {
-            this.emitWithState("StartVoiceQuiz");
-        }
+        this.emitWithState("StartVoiceQuiz");
     },
     'AMAZON.HelpIntent': function () {
         speechOutput = '';
@@ -94,23 +95,16 @@ var handlers = {
         speechOutput = "This is a place holder response for the intent named AMAZON.ResumeIntent. This intent has no slots. Anything else?";
         this.emit(":ask", speechOutput, speechOutput);
     },
-    "StartVoiceQuizIntent": function () {
-        this.handler.state = VOICE_QUIZ_STATE.START;
-        this.emitWithState("StartVoiceQuiz");
-    },
     'Unhandled': function () {
-        speechOutput = "The skill didn't quite understand what you wanted.  Do you want to try something else?";
+        speechOutput = "The skill didn't quite understand what you wanted. Do you want to try something else?";
         this.emit(':ask', speechOutput, speechOutput);
     }
 };
 
 var startVoiceQuiz = Alexa.CreateStateHandler(VOICE_QUIZ_STATE.START, {
     "StartVoiceQuiz": function () {
-
-        if (this.event.session && !this.event.session.new) {
-            this.emit(":ask", this.t("ALREADY_WELCOME_MESSAGE"), this.t("WELCOME_MESSAGE_REPEAT"));
-        }
-
-        this.emit(":ask", this.t("WELCOME_MESSAGE"), this.t("HELP_MESSAGE"));
+        var count = _.random(Database);
+        speechOutput = "Playing audio " + convertSSML(Database[count].audio);
+        this.emit(':tell', speechOutput);
     },
 });

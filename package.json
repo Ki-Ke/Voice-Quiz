@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Ki-Ke/Voice-Quiz#readme",
   "dependencies": {
-    "alexa-sdk": "^1.0.20"
+    "alexa-sdk": "^1.0.20",
+    "lodash": "^4.17.4"
   }
 }
