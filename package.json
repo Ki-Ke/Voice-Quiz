@@ -1,0 +1,22 @@
+{
+  "name": "voice-quiz",
+  "version": "1.0.0",
+  "description": "Alexa Skill",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ki-Ke/Voice-Quiz.git"
+  },
+  "author": "Keerthi Niranjan <keerthiniranjan16@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Ki-Ke/Voice-Quiz/issues"
+  },
+  "homepage": "https://github.com/Ki-Ke/Voice-Quiz#readme",
+  "dependencies": {
+    "alexa-sdk": "^1.0.20"
+  }
+}
