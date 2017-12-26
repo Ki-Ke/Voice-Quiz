@@ -16,7 +16,7 @@ var data = [
         answer: "Emmet"
     }, {
         audio: "Francesco_Bernoulli.mp3",
-        answer: "Francesco_Bernoulli"
+        answer: "Francesco Bernoulli"
     }, {
         audio: "Gru.mp3",
         answer: "Gru"
@@ -25,16 +25,16 @@ var data = [
         answer: "Heather"
     }, {
         audio: "Holly_Swiftwell.mp3",
-        answer: "Holly_Swiftwell"
+        answer: "Holly Swiftwell"
     }, {
         audio: "James P.mp3",
         answer: "James P"
     }, {
         audio: "King_Julien_Madagascar_3.mp3",
-        answer: "King_Julien_Madagascar_3"
+        answer: "King Julien Madagascar 3"
     }, {
         audio: "Light_mcqueen.mp3",
-        answer: "Light_mcqueen"
+        answer: "Light mcqueen"
     }, {
         audio: "Lou.mp3",
         answer: "Lou"
@@ -46,16 +46,16 @@ var data = [
         answer: "Marty"
     }, {
         audio: "Master_Shifu.mp3",
-        answer: "Master_Shifu"
+        answer: "Master Shifu"
     }, {
         audio: "Mater.mp3",
         answer: "Mater"
     }, {
         audio: "Mike_Wazowski.mp3",
-        answer: "Mike_Wazowski"
+        answer: "Mike Wazowski"
     }, {
         audio: "Miles_Axlerod.mp3",
-        answer: "Miles_Axlerod"
+        answer: "Miles Axlerod"
     }, {
         audio: "Nico.mp3",
         answer: "Nico"
@@ -70,7 +70,7 @@ var data = [
         answer: "Pedro"
     }, {
         audio: "Professor_Zundapp.mp3",
-        answer: "Professor_Zundapp"
+        answer: "Professor Zundapp"
     }, {
         audio: "RJ.mp3",
         answer: "RJ"
